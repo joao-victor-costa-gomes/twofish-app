@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criptografia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 10px #ccc;
+            text-align: left;
+        }
+
+        input, button {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Algoritmo de Criptografia Twofish</h1>
+
+    <div class="wrapper">
+        <!-- Container de Criptografia -->
+        <div class="container">
+            <h2>Criptografar Texto</h2>
+            <form method="POST" action="/">
+                <label for="chave">Chave (máx 16 caracteres):</label>
+                <input type="text" name="chave" id="chave" maxlength="16" required>
+
+                <label for="texto">Texto (máx 16 caracteres):</label>
+                <input type="text" name="texto" id="texto" maxlength="16" required>
+
+                <button type="submit" name="acao" value="criptografar">Criptografar</button>
+            </form>
+
+            {% if resultado_cripto %}
+                <div class="resultado">
+                    <strong>Resultado:</strong><br>
+                    {{ resultado_cripto }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Container de Descriptografia -->
+        <div class="container">
+            <h2>Descriptografar Texto</h2>
+            <form method="POST" action="/">
+                <label for="chave2">Chave (máx 16 caracteres):</label>
+                <input type="text" name="chave" id="chave2" maxlength="16" required>
+
+                <label for="texto2">Texto criptografado:</label>
+                <input type="text" name="texto" id="texto2" required>
+
+                <button type="submit" name="acao" value="descriptografar">Descriptografar</button>
+            </form>
+
+            {% if resultado_descripto %}
+                <div class="resultado">
+                    <strong>Resultado:</strong><br>
+                    {{ resultado_descripto }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
